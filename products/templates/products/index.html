@@ -1,0 +1,70 @@
+{% extends "products/layouts.html" %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">Crud Django</h1>
+        <p class="lead">Projeto realizado para desafio Techsolutio</p>
+        <hr class="my-2">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://github.com/yunkzinn" role="button">Mais Informações</a>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Produtos
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-inverse">
+                        <thead class="t-heads-inverse">
+                            <tr>
+                                <th> Produto</th>
+                                <th width="30"> Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for list in lists %}
+                            <tr>
+                                <td><a href="tasks/{{ list.id }}">{{ list.title }}</a></td>
+                                {% if list.status == 1 %}
+                                <td><span class="badge badge-success"> Em estoque </span></td>
+                                {% endif %}
+                                {% if list.status == 2 %}
+                                <td><span class="badge badge-danger"> Sem estoque </span></td>
+                                {% endif %}
+                                {% if list.status == 3 %}
+                                <td><span class="badge badge-dark"> Desativado </span></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    O que o projeto faz?
+                </div>
+                <div class="card-body">
+                    <p>Crud app com os seguintes campos</p>
+                    <ol>
+                        <li>Título do produto</li>
+                        <li>Descrição do produto</li>
+                        <li>Status do produto <br> (Em estoque, Sem Estoque, Desativado)</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
